@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
+
+
+
+.base {
+  margin: 1em;
+  margin-bottom: 1em;
+  background-color: #0f0f0f;
+  height: 96.5vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.BLM-subtext{
+  margin: 1em;
+  font-family: 'Roboto Slab', serif;
+}
+
+.BLM{
+  color: #ffff00;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +39,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0f0f0f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,5 +59,79 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/* INPUT BOX STYLING, NEED TO CLEAN UP */
+.col-3-zip {
+  float: left;
+  width: 18.33% ;
+  margin: 40px 3%;
+  position: relative;
+}
+.zip-button{
+  display: none;
+  animation: none;
+  position: absolute;
+  font-size: 25px;
+  margin-top: 3px;
+  margin-left: 3px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: #ffff00;
+}
+input[type="text"] {
+  font: 15px/24px "Lato", Arial, sans-serif;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  background-color: transparent;
+}
+
+.effect-5 ~ .focus-border {
+  position: absolute;
+  height: 36px;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  transition: 0.4s;
+}
+
+/*= input focus effects css
+=========================== */
+:focus{outline: none;}
+
+.effect-4,
+.effect-5,
+.effect-6{border: 0; padding: 5px 0 7px; border: 1px solid transparent; border-bottom-color: #ccc; transition: 0.4s;}
+
+.effect-4:focus,
+.effect-5:focus,
+.effect-6:focus{padding: 5px 14px 7px; transition: 0.4s;}
+
+.effect-5 ~ .focus-border{position: absolute; height: 36px; bottom: 0; left: 0; width: 0; transition: 0.4s;}
+.effect-5:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #ffff00;}
+
+
+
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50%, 0);
+    transform: translate3d(0, 50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
   }
 }
