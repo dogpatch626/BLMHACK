@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
 
 
+
 .base {
   margin: 1em;
   margin-bottom: 1em;
@@ -69,7 +70,21 @@
   margin: 40px 3%;
   position: relative;
 }
-
+.zip-button{
+  display: none;
+  animation: none;
+  position: absolute;
+  font-size: 25px;
+  margin-top: 3px;
+  margin-left: 3px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: #ffff00;
+}
 input[type="text"] {
   font: 15px/24px "Lato", Arial, sans-serif;
   color: white;
@@ -105,3 +120,18 @@ input[type="text"] {
 .effect-5:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #ffff00;}
 
 
+
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50%, 0);
+    transform: translate3d(0, 50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
