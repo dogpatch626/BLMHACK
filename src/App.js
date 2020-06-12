@@ -7,6 +7,7 @@ import Main from "./components/Main";
 import repPage from "./pages/repPage";
 import Home from "./pages/Home.pages";
 export default class App extends Component {
+
   render() {
     return (
       <div>
@@ -14,6 +15,9 @@ export default class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path ="/main" component={Main} />
         </Router>
+
+
+ 
       </div>
     );
   }

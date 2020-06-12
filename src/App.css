@@ -14,6 +14,11 @@
   overflow: hidden;
 }
 
+.BLM-header{
+  font-family: 'Roboto Slab', serif;
+}
+
+
 .BLM-subtext{
   margin: 1em;
   font-family: 'Roboto Slab', serif;
@@ -21,6 +26,9 @@
 
 .BLM{
   color: #ffff00;
+  background-color: yellow;
+    color: black;
+    padding: 20px;
 }
 
 .App {
@@ -118,9 +126,6 @@ input[type="text"] {
 
 .effect-5 ~ .focus-border{position: absolute; height: 36px; bottom: 0; left: 0; width: 0; transition: 0.4s;}
 .effect-5:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #ffff00;}
-
-
-
 
 @keyframes fadeInUp {
   from { 
