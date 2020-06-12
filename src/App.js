@@ -12,8 +12,13 @@ function App() {
         <span className="BLM-subtext"> Locate, Review, and Rate your elecetd officals bi-weekly and keep track of their legistrations and bills.</span>
 
         <div class="col-3-zip">
-            <input class="effect-5" type="text" placeholder="ENTER ZIPCODE"/>
+            <form>
+              
+            <input class="effect-5" type="text" placeholder="ENTER ZIPCODE" type="text" pattern="[0-9]*"/>
             <span class="focus-border"></span>
+            <button type="sumbit" >Go</button>
+            </form>
+           
         </div>
       </header>
       </div>
