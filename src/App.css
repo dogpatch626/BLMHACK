@@ -1,6 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
 
 
+.progress {
+  margin: 10px auto;
+  padding: 0;
+  width: 96%;
+  height: 20px;
+  overflow: hidden;
+  background: #e5e5e5;
+  border-radius: 2px;
+}
+
+.bar {
+  position: relative;
+  float: left;
+  min-width: 1%;
+  height: 100%;
+  background: #ffff00;
+}
+
+.BLM-info-b {
+  display: inline-block;
+  background-color: #ffff00;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.close-n {
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.BLM-z {
+  color: #ffff00;
+  text-decoration: underline;
+  font-weight: bold;
+
+}
+
+.percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-family: tahoma, arial, helvetica;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+.BLM-head {
+  color: white;
+  font-family: 'Roboto Slab', serif;
+}
 
 .base {
   margin: 1em;
@@ -14,22 +71,66 @@
   overflow: hidden;
 }
 
-.BLM-header{
+.base-2 {
+  overflow: auto;
+  margin: 1em;
+  margin-bottom: 1em;
+  background-color: #0f0f0f;
+  height: 96.5vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.BLM-header {
   font-family: 'Roboto Slab', serif;
   margin: 1em;
 }
 
+.CNG-bio {
+  text-align: left;
+  margin-top: -12px !important;
+  margin: 36px;
+  position: relative;
+}
 
-.BLM-subtext{
+.CNG-bio-i {
+  color: white;
+  margin-bottom: 0px !important;
+  font-size: 13px;
+}
+
+.CNG-bio-DEM {
+  color: #6076e0;
+  font-family: 'Roboto Slab', serif;
+}
+
+.CNG-bio-REP {
+  color: #bd2130;
+  font-family: 'Roboto Slab', serif;
+}
+
+.CNG-bio-p {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.rounded-card {
+  border-radius: 5% !important;
+  width: 75%;
+}
+
+.BLM-subtext {
   margin: 1em;
   font-family: 'Roboto Slab', serif;
 }
 
-.BLM{
+.BLM {
   color: #ffff00;
   background-color: yellow;
-    color: black;
-    padding: 20px;
+  color: black;
+  padding: 20px;
 }
 
 .App {
@@ -66,6 +167,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -75,11 +177,12 @@
 /* INPUT BOX STYLING, NEED TO CLEAN UP */
 .col-3-zip {
   float: left;
-  width: 18.33% ;
+  width: 18.33%;
   margin: 40px 3%;
   position: relative;
 }
-.zip-button{
+
+.zip-button {
   display: none;
   animation: none;
   position: absolute;
@@ -87,13 +190,14 @@
   margin-top: 3px;
   margin-left: 3px;
   background-color: Transparent;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   border: none;
-  cursor:pointer;
+  cursor: pointer;
   overflow: hidden;
-  outline:none;
+  outline: none;
   color: #ffff00;
 }
+
 input[type="text"] {
   font: 15px/24px "Lato", Arial, sans-serif;
   color: white;
@@ -104,7 +208,7 @@ input[type="text"] {
   background-color: transparent;
 }
 
-.effect-5 ~ .focus-border {
+.effect-5~.focus-border {
   position: absolute;
   height: 36px;
   bottom: 0;
@@ -115,21 +219,44 @@ input[type="text"] {
 
 /*= input focus effects css
 =========================== */
-:focus{outline: none;}
+:focus {
+  outline: none;
+}
 
 .effect-4,
 .effect-5,
-.effect-6{border: 0; padding: 5px 0 7px; border: 1px solid transparent; border-bottom-color: #ccc; transition: 0.4s;}
+.effect-6 {
+  border: 0;
+  padding: 5px 0 7px;
+  border: 1px solid transparent;
+  border-bottom-color: #ccc;
+  transition: 0.4s;
+}
 
 .effect-4:focus,
 .effect-5:focus,
-.effect-6:focus{padding: 5px 14px 7px; transition: 0.4s;}
+.effect-6:focus {
+  padding: 5px 14px 7px;
+  transition: 0.4s;
+}
 
-.effect-5 ~ .focus-border{position: absolute; height: 36px; bottom: 0; left: 0; width: 0; transition: 0.4s;}
-.effect-5:focus ~ .focus-border{width: 100%; transition: 0.4s; border: 2px solid #ffff00;}
+.effect-5~.focus-border {
+  position: absolute;
+  height: 36px;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  transition: 0.4s;
+}
+
+.effect-5:focus~.focus-border {
+  width: 100%;
+  transition: 0.4s;
+  border: 2px solid #ffff00;
+}
 
 @keyframes fadeInUp {
-  from { 
+  from {
     opacity: 0;
     -webkit-transform: translate3d(0, 50%, 0);
     transform: translate3d(0, 50%, 0);

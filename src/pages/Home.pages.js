@@ -1,8 +1,7 @@
 import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import logo from "../logo.svg";
+import { BrowserRouter as  Link } from "react-router-dom";
 import "../App.css";
 import Main from "../components/Main";
 
@@ -44,7 +43,6 @@ class Home extends Component {
                 </h2>
               </a>
               <span className="BLM-subtext">
-                {" "}
                 Locate, Review, and Rate your elecetd officals bi-weekly and
                 keep track of their legistrations and bills.
               </span>
@@ -57,7 +55,6 @@ class Home extends Component {
                     onClick={this.showButton}
                     onChange={(e) => this.zipChangeHandler(e)}
                     placeholder="ENTER ZIPCODE"
-                    type="text"
                     pattern="[0-9]*"
                   />
                   <span class="focus-border"></span>
