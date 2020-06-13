@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Card from "./Card.js";
+
 export default class Main extends Component {
   state = {
+    show: false,
     data: [
       {
         name: 'Charles "Chuck" Schumer',
@@ -65,6 +67,8 @@ export default class Main extends Component {
     alert.style.display = "none"
   }
 
+                    
+
   componentDidMount() {
 
     console.log(this.state.data)
@@ -72,10 +76,12 @@ export default class Main extends Component {
 
   render() {
     return (
+      
       <div className="App">
         <div className="base-2">
           <div className="container">
             <section class="team-section text-center my-5">
+              <span className="BLM-weeknum"> Week 13</span>
 
               <p id="notification" class="white-text w-responsive mx-auto BLM-info-b">
                 We provide an bi-weekly general poll that is open to the public.
@@ -101,13 +107,16 @@ export default class Main extends Component {
                     title={person.title}
                   />
 
+
                 ))}
 
               </div>
             </section>
+
           </div>
         </div>
       </div>
+      
     );
   }
 }

@@ -10,14 +10,12 @@ export default class Bar extends Component {
         this.setState({
             percentage: this.props.percent
         });
-        console.log(this.props.percent, this.state.percentage)
     }
     render() {
         let mystyle = {
             width: this.state.percentage + "%"
         }
 
-        console.log(mystyle)
         return (
             <div class="progress">
                 <div class="bar" style={mystyle}>
