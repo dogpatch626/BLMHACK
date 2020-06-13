@@ -1,91 +1,168 @@
 import React, { Component } from "react";
 import Bar from "./Bar.js";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import poll from "poll/dist/esm/poll.mjs";
+//polling stuff
+const vote = {
+    yes: 0,
+    no: 0,
+  };
+var stopPolling = false;
+
+const shouldStopPolling = () => stopPolling;
+setTimeout(() => {
+  stopPolling = true;
+}, 1000);
+//polling stuff end
 
 export default class Card extends Component {
-    state = {
-        show: false
+  state = {
+    show: false,
+    showVote: false,
+  };
+  // polling begin
+  yesVote = () => {
+    if (vote.yes > 0 || vote.no > 0) {
+      console.log({ yes: vote });
+    } else {
+      vote.yes++;
     }
-    handler = e => {
-        this.setState({
-            show: !this.state.show
-        })
+  };
+  noVote = () => {
+    if (vote.yes > 0 || vote.no > 0) {
+      console.log({ no: vote });
+    } else {
+      vote.no++;
+    }
+  };
+  // polling end
+  handler = (e) => {
+    this.setState({
+      show: !this.state.show,
+    });
+  };
+
+  handlerVote = (e) => {
+    this.setState({
+      showVote: !this.state.showVote,
+    });
+  };
+
+  componentDidMount() {
+    // console.log(this.props)
+  }
+  render() {
+    let partyCNG;
+    if (this.props.party === "D") {
+      partyCNG = true;
+    } else if (this.props.party === "R") {
+      partyCNG = false;
+    } else {
+      return;
     }
 
-    componentDidMount() {
-        // console.log(this.props)
-    }
-    render() {
-        let partyCNG;
-        if (this.props.party === 'D') {
-            partyCNG = true
-        } else if (this.props.party === 'R') {
-            partyCNG = false
-        } else {
-            return
-        }
+    return (
+      <div class="col-lg-3 col-md-6 mb-lg-0 mb-5">
+        <div class="avatar mx-auto">
+          <img
+            src={this.props.pic}
+            class="rounded-card z-depth-1"
+            alt={this.props.name}
+          />
+        </div>
+        <div className="CNG-bio">
+          <h5 class="font-weight-bold mt-4 mb-3 CNG-bio-i">
+            {this.props.name}
+          </h5>
 
-        return (
-            <div class="col-lg-3 col-md-6 mb-lg-0 mb-5">
-                <div class="avatar mx-auto">
+          {partyCNG ? (
+            <p class=" text-uppercase blue-text CNG-bio-REP">
+              <strong>{this.props.title}</strong>
+            </p>
+          ) : (
+            <p class=" text-uppercase blue-text CNG-bio-DEM">
+              <strong>{this.props.title}</strong>
+            </p>
+          )}
 
-                    <img
-                        src={this.props.pic}
-                        class="rounded-card z-depth-1"
-                        alt={this.props.name}
-                    />
-                </div>
-                <div className="CNG-bio">
-                    <h5
-                        class="font-weight-bold mt-4 mb-3 CNG-bio-i" >
-                        {this.props.name}
-                    </h5>
+          <p className="CNG-bio-p">
+            <Bar percent="70" />
+          </p>
 
-                    {partyCNG ? <p class=" text-uppercase blue-text CNG-bio-REP">
-                        <strong>{this.props.title}</strong>
-                    </p> : <p class=" text-uppercase blue-text CNG-bio-DEM">
-                            <strong>{this.props.title}</strong>
-                        </p>}
+          <span class="CNG-s" onClick={this.handler}>
+            {" "}
+            See More{" "}
+          </span>
+          <span className="BLM-blt" onClick={this.handlerVote}>
+            {" "}
+            <i class="fas fa-vote-yea"></i>
+          </span>
 
+          {/* CNG Modal */}
+          <Modal show={this.state.show} onHide={this.handler}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {" "}
+                <p class=" text-uppercase blue-text CNG-bio-WHI">
+                  <strong>{this.props.title}</strong>
+                </p>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <img
+                src={this.props.pic}
+                class="rounded-card-modal z-depth-1"
+                alt={this.props.name}
+              />
+              <h5 class="font-weight-bold mt-4 mb-3 CNG-bio-i-m">
+                {this.props.name}
+              </h5>
 
-                    <p className="CNG-bio-p">
-                        <Bar percent="70" />
-                    </p>
+              <span className="CNG-rtgtxt">
+                Ratings from Advocacy Organizations
+              </span>
 
-                    <span class="CNG-s" onClick={this.handler}> See More </span>
-                   <span className="BLM-blt"> <i class="fas fa-vote-yea"></i></span>
-                   
+              <span className="CNG-arttxt">Articles</span>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                className="modalCloseBTN"
+                onClick={this.handler}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
-                    <Modal show={this.state.show} onHide={this.handler}>
-                        <Modal.Header closeButton>
-                            <Modal.Title> <p class=" text-uppercase blue-text CNG-bio-WHI"><strong>{this.props.title}</strong></p></Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <img
-                                src={this.props.pic}
-                                class="rounded-card-modal z-depth-1"
-                                alt={this.props.name}
-                            />
-                            <h5
-                                class="font-weight-bold mt-4 mb-3 CNG-bio-i-m" >
-                                {this.props.name}
-                            </h5>
-
-                            <span className="CNG-rtgtxt">Ratings from Advocacy Organizations</span>
-
-                            <span className="CNG-arttxt">Articles</span>
-
-
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary"  className="modalCloseBTN" onClick={this.handler}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
-            </div>
-        );
-    }
+          {/* End  CNG Modal */}
+          {/* Voting Modal */}
+          <Modal show={this.state.showVote} onHide={this.handlerVote}>
+            <Modal.Body className="voteModal">
+              <h5 class="font-weight-bold mt-4 mb-3 CNG-bio-i-m">
+                {this.props.name}
+              </h5>
+              <button onClick={() => poll(this.yesVote, 0, shouldStopPolling)}>
+                Vote Yea
+              </button>
+              <button onClick={() => poll(this.noVote, 0, shouldStopPolling)}>
+                Vote Nay
+              </button>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                className="modalCloseBTN"
+                onClick={this.handlerVote}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          {/* End Voting Modal */}
+        </div>
+      </div>
+    );
+  }
 }
