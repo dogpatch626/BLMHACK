@@ -34,7 +34,6 @@ class Home extends Component {
               
             })
 
-          //=> { latitude: -33.8591, longitude: 151.2002, region: { name: "New South Wales" ... } ... }
         })();
 
         
