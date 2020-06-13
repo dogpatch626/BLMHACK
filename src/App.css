@@ -123,7 +123,10 @@
   margin-top: 8px !important;
   width: 30%;
 }
-
+.logo {
+  width: 18%;
+  position: relative;
+}
 .CNG-rtgtxt {
   position: absolute;
   left: 38%;

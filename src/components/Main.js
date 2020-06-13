@@ -6,48 +6,56 @@ export default class Main extends Component {
     show: false,
     data: [
       {
+        key: 1,
         name: 'Charles "Chuck" Schumer',
         party: 'D',
         title: 'Senior Senator for New York',
         pic: 'https://www.govtrack.us/static/legislator-photos/300087-100px.jpeg'
       },
       {
+        key: 2,
         name: 'Kirsten Gillibrand',
         party: 'D',
         title: 'Junior Senator for New York',
         pic: 'https://www.govtrack.us/static/legislator-photos/412223-100px.jpeg'
       },
       {
+        key: 3,
         name: 'José Serrano',
         party: 'R',
         title: 'Representative for New Yorks 15th congressional district',
         pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
       },
       {
+        key: 4,
         name: 'José Serrano',
         party: 'R',
         title: 'Representative for New Yorks 15th congressional district',
         pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
       },
       {
+        key: 5,
         name: 'Charles "Chuck" Schumer',
         party: 'D',
         title: 'Senior Senator for New York',
         pic: 'https://www.govtrack.us/static/legislator-photos/300087-100px.jpeg'
       },
       {
+        key: 6,
         name: 'Kirsten Gillibrand',
         party: 'D',
         title: 'Junior Senator for New York',
         pic: 'https://www.govtrack.us/static/legislator-photos/412223-100px.jpeg'
       },
       {
+        key: 7,
         name: 'José Serrano',
         party: 'R',
         title: 'Representative for New Yorks 15th congressional district',
         pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
       },
       {
+        key: 8,
         name: 'José Serrano',
         party: 'R',
         title: 'Representative for New Yorks 15th congressional district',
@@ -101,6 +109,7 @@ export default class Main extends Component {
                   // <p>Hello, {person.name} from {person.country}!</p>
 
                   <Card
+                    id={person.key}
                     name={person.name}
                     party={person.party}
                     pic={person.pic}
