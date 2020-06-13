@@ -4,8 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import poll from "poll/dist/esm/poll.mjs";
 //polling stuff
-const pollDelayInMinutes = 10;
+const vote = {
+    yes: 0,
+    no: 0,
+  };
 var stopPolling = false;
+
 const shouldStopPolling = () => stopPolling;
 setTimeout(() => {
   stopPolling = true;
@@ -18,8 +22,19 @@ export default class Card extends Component {
     showVote: false,
   };
   // polling begin
-  fn = () => {
-    console.log("Hello, beautiful!");
+  yesVote = () => {
+    if (vote.yes > 0 || vote.no > 0) {
+      console.log({ yes: vote });
+    } else {
+      vote.yes++;
+    }
+  };
+  noVote = () => {
+    if (vote.yes > 0 || vote.no > 0) {
+      console.log({ no: vote });
+    } else {
+      vote.no++;
+    }
   };
   // polling end
   handler = (e) => {
@@ -128,10 +143,10 @@ export default class Card extends Component {
               <h5 class="font-weight-bold mt-4 mb-3 CNG-bio-i-m">
                 {this.props.name}
               </h5>
-              <button onClick={() => poll(this.fn, 0, shouldStopPolling)}>
+              <button onClick={() => poll(this.yesVote, 0, shouldStopPolling)}>
                 Vote Yea
               </button>
-              <button onClick={() => poll(this.fn, 0, shouldStopPolling)}>
+              <button onClick={() => poll(this.noVote, 0, shouldStopPolling)}>
                 Vote Nay
               </button>
             </Modal.Body>
