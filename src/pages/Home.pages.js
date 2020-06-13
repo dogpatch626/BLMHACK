@@ -4,6 +4,9 @@ import { withRouter } from "react-router-dom";
 import { BrowserRouter as  Link } from "react-router-dom";
 import "../App.css";
 import Main from "../components/Main";
+import adapter from '../adapters/adapter.js';
+var toJSON = require('plain-text-data-to-json')
+const ipLocation = require("iplocation");
 
 class Home extends Component {
   state = {
@@ -14,7 +17,29 @@ class Home extends Component {
     this.setState({ zipcode: e.target.value });
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    adapter.getLocation()
+      .then(data => {
+        const JSON = toJSON(data)
+        const ip = JSON[4].substring(3,JSON[4].length);
+        (async () => {
+          await ipLocation(ip)
+            .then(data => {
+              this.setState({
+                zipcode:data.country.postalCode
+              })
+              const input = document.getElementById("zipcode")
+              input.value = this.state.zipcode
+              console.log(this.state.zipcode)
+              
+            })
+
+          //=> { latitude: -33.8591, longitude: 151.2002, region: { name: "New South Wales" ... } ... }
+        })();
+
+        
+      })
+  }
   showButton = (e) => {
     let b = document.getElementById("sb");
     b.style.display = "inline";
@@ -50,6 +75,7 @@ class Home extends Component {
               <div className="col-3-zip">
                 <form class="index-search-form" onSubmit={this.changePage}>
                   <input
+                    id="zipcode"
                     class="effect-5"
                     type="text"
                     onClick={this.showButton}
