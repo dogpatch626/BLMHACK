@@ -5,12 +5,20 @@ import Button from 'react-bootstrap/Button';
 
 export default class Card extends Component {
     state = {
-        show: false
+        show: false,
+        showVote: false
     }
     handler = e => {
         this.setState({
             show: !this.state.show
         })
+    }
+
+    handlerVote = e => {
+        this.setState({
+            showVote: !this.state.showVote
+        })
+
     }
 
     componentDidMount() {
@@ -54,9 +62,9 @@ export default class Card extends Component {
                     </p>
 
                     <span class="CNG-s" onClick={this.handler}> See More </span>
-                   <span className="BLM-blt"> <i class="fas fa-vote-yea"></i></span>
-                   
+                    <span className="BLM-blt" onClick={this.handlerVote}> <i class="fas fa-vote-yea"></i></span>
 
+                    {/* CNG Modal */}
                     <Modal show={this.state.show} onHide={this.handler}>
                         <Modal.Header closeButton>
                             <Modal.Title> <p class=" text-uppercase blue-text CNG-bio-WHI"><strong>{this.props.title}</strong></p></Modal.Title>
@@ -79,11 +87,31 @@ export default class Card extends Component {
 
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="secondary"  className="modalCloseBTN" onClick={this.handler}>
+                            <Button variant="secondary" className="modalCloseBTN" onClick={this.handler}>
                                 Close
                             </Button>
                         </Modal.Footer>
                     </Modal>
+
+                    {/* End  CNG Modal */}
+                    {/* Voting Modal */}
+                    <Modal show={this.state.showVote} onHide={this.handlerVote}>
+                        <Modal.Body className="voteModal">
+                            <h5
+                                class="font-weight-bold mt-4 mb-3 CNG-bio-i-m" >
+                                {this.props.name}
+                            </h5>
+                    <button>Vote Yea</button> 
+                    <button>Vote Nay</button>
+
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" className="modalCloseBTN" onClick={this.handlerVote}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                    {/* End Voting Modal */}
                 </div>
             </div>
         );
