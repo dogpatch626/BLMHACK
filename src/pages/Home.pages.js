@@ -5,7 +5,7 @@ import { BrowserRouter as  Link } from "react-router-dom";
 import "../App.css";
 import Main from "../components/Main";
 import adapter from '../adapters/adapter.js';
-import Logo from '/Users/user/Desktop/Playground/blacklivematter-hack/src/img/kyo-logo.png';
+import Logo from '../img/kyo-logo.png';
 import { Route } from 'react-router-dom'
 
 var toJSON = require('plain-text-data-to-json')
@@ -91,7 +91,7 @@ class Home extends Component {
         <div className="base">
           <div className="container">
             <header className="App-header">
-              <h1 className="BLM-header"><img className="logo" src={Logo}></img></h1>
+            <h1 className="BLM-header"><img className="logo" src={Logo}></img></h1>
               <a href="https://blacklivesmatters.carrd.co/">
                 <h2 className="BLM">
                   {" "}
