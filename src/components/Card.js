@@ -11,21 +11,30 @@ export default class Card extends Component {
         showVote: false,
         voted: false,
     };
+
+    quickFix(e) {
+        let overlay = document.getElementById("overlay");
+        overlay.style.display = "none"
+
+        let btn = document.getElementById("btn");
+        btn.style.display = "inline"    
+    }
     captchaDone(v) {
         let data = {
             secret: process.env.REACT_APP_API_SECRET_KEY,
             response: v,
-            };
+        };
+
         adapter.verifyCaptcha(data)
             .then(data => {
                 let overlay = document.getElementByID("overlay");
                 overlay.style.display = "none"
-                
+
                 let btn = document.getElementById("btn");
                 btn.style.display = "inline"
 
             })
-     
+
     }
 
     voteHandler(e, v) {
@@ -202,10 +211,12 @@ export default class Card extends Component {
                                 </div>
 
                             </div>
-                            <div className="BLM-Vot">
+                            <div className="BLM-Vot" onClick={this.quickFix} >
                                 <ReCAPTCHA
-                                    sitekey= {process.env.REACT_APP_API_KEY}
+                                    sitekey={process.env.REACT_APP_API_KEY}
+                                    
                                     onChange={this.captchaDone}
+                                    
                                 />
                                 <div id="btn" className="BLM-Vot-b">
                                     <button className="bm-yea" onClick={(e) => this.voteHandler(e, 'YEA')}>
@@ -216,7 +227,7 @@ export default class Card extends Component {
                                 </button>
                                 </div>
                                 <div id="overlay" className="BLM-Vot-c">
-                                    Complete <br/> Captcha
+                                    Complete <br /> Captcha
                                 </div>
                             </div>
                         </Modal.Body>

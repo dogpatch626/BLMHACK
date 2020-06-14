@@ -122,6 +122,7 @@ class Home extends Component {
                     name="submit"
                     type="sumbit"
                   >
+                    
                     <i class="far fa-arrow-alt-circle-right"></i>
                   </button>
                   </Link>
