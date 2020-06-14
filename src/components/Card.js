@@ -13,7 +13,7 @@ export default class Card extends Component {
     };
     captchaDone(v) {
         let data = {
-            secret: '6LfJWaQZAAAAAPcffCFHLRDA6XdXgbYVFVkV1msd',
+            secret: process.env.REACT_APP_API_SECRET_KEY,
             response: v,
             };
         adapter.verifyCaptcha(data)
@@ -23,7 +23,7 @@ export default class Card extends Component {
                 
                 let btn = document.getElementById("btn");
                 btn.style.display = "inline"
-                
+
             })
      
     }
@@ -204,7 +204,7 @@ export default class Card extends Component {
                             </div>
                             <div className="BLM-Vot">
                                 <ReCAPTCHA
-                                    sitekey="6LfJWaQZAAAAAI7UuhtY_vfZh_bUHaFVgldng9ne"
+                                    sitekey= {process.env.REACT_APP_API_KEY}
                                     onChange={this.captchaDone}
                                 />
                                 <div id="btn" className="BLM-Vot-b">
