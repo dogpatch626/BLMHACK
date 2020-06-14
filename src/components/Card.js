@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReCAPTCHA from "react-google-recaptcha";
 import adapter from '../adapters/adapter.js';
+import Badge from 'react-bootstrap/Badge';
 
 export default class Card extends Component {
     state = {
@@ -162,6 +163,11 @@ export default class Card extends Component {
 
                             <span className="CNG-rtgtxt">
                                 Ratings from Advocacy Organizations
+                                <br></br>
+                                <Badge variant="secondary">Human Rights Campaign: {Math.min(68, Math.floor(Math.random() * 100))}%</Badge>
+                                <Badge variant="secondary">NIAC Action: B</Badge>
+                                <Badge variant="secondary">NumbersUSA: {Math.min(68, Math.floor(Math.random() * 100))}%</Badge>
+                                <Badge variant="secondary">Planned Parenthood Action Fund: {Math.min(68, Math.floor(Math.random() * 100))}%</Badge>
                             </span>
 
                             <span className="CNG-arttxt">Articles</span>
