@@ -103,7 +103,7 @@ export default class Main extends Component {
                 class="h1-responsive font-weight-bold my-5 BLM-head"
                 style={{ color: "white" }}
               >
-                Elected Official for Zipcode: <span class="BLM-z"> {this.props.zipcode} </span>
+                Elected Officials for Zipcode: <span class="BLM-z"> {this.props.zipcode} </span>
               </h2>
 
               <div class="row">

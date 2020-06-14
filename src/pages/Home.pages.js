@@ -6,8 +6,12 @@ import "../App.css";
 import Main from "../components/Main";
 import adapter from '../adapters/adapter.js';
 import Logo from '/Users/user/Desktop/Playground/blacklivematter-hack/src/img/kyo-logo.png';
+import { Route } from 'react-router-dom'
+
 var toJSON = require('plain-text-data-to-json')
 const ipLocation = require("iplocation");
+
+
 
 class Home extends Component {
   state = {
@@ -20,7 +24,19 @@ class Home extends Component {
     this.setState({ zipcode: e.target.value });
   }
 
+  enterHandler(e){
+    
+    if(e.keyCode === 13) {
+      e.preventDefault()
+      // ReactDOM.render(<Main path="/main"  zipcode={this.state.zipcode} />, document.getElementById("root"));
+
+      
+    }
+  }
+
   componentDidMount() {
+    document.addEventListener("keydown", this.enterHandler, false);
+
     adapter.getLocation()
       .then(data => {
         const JSON = toJSON(data)
@@ -33,7 +49,7 @@ class Home extends Component {
               })
               const input = document.getElementById("zipcode")
               input.value = this.state.zipcode
-              console.log(this.state.zipcode)
+
               
             })
 
@@ -42,6 +58,13 @@ class Home extends Component {
         
       })
   }
+
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown", this.enterHandler, false);
+  }
+
+
   showButton = (e) => {
     let b = document.getElementById("sb");
     b.style.display = "inline";
@@ -59,7 +82,7 @@ class Home extends Component {
         })
       })
 
-    // ReactDOM.render(<Main zipcode={this.state.zipcode} />, document.getElementById("root"));
+    ReactDOM.render(<Main  zipcode={this.state.zipcode} />, document.getElementById("root"));
   };
 
   render() {

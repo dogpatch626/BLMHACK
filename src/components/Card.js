@@ -3,7 +3,7 @@ import Bar from "./Bar.js";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReCAPTCHA from "react-google-recaptcha";
-
+import adapter from '../adapters/adapter.js';
 
 export default class Card extends Component {
     state = {
@@ -12,11 +12,19 @@ export default class Card extends Component {
         voted: false,
     };
     captchaDone(v) {
-        let overlay = document.getElementByID("overlay");
-        overlay.style.display = "none"
-        
-        let btn = document.getElementById("btn");
-        btn.style.display = "inline"
+        let data = {
+            secret: '6LfJWaQZAAAAAPcffCFHLRDA6XdXgbYVFVkV1msd',
+            response: v,
+            };
+        adapter.verifyCaptcha(data)
+            .then(data => {
+                let overlay = document.getElementByID("overlay");
+                overlay.style.display = "none"
+                
+                let btn = document.getElementById("btn");
+                btn.style.display = "inline"
+                
+            })
      
     }
 
