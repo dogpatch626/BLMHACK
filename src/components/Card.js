@@ -3,7 +3,6 @@ import Bar from "./Bar.js";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-
 export default class Card extends Component {
     state = {
         show: false,
@@ -138,7 +137,7 @@ export default class Card extends Component {
 
                             <span className="CNG-rtgtxt">
                                 Ratings from Advocacy Organizations
-              </span>
+                            </span>
 
                             <span className="CNG-arttxt">Articles</span>
                         </Modal.Body>
@@ -157,15 +156,39 @@ export default class Card extends Component {
                     {/* Voting Modal */}
                     <Modal show={this.state.showVote} onHide={this.handlerVote}>
                         <Modal.Body className="voteModal">
-                            <h5 class="font-weight-bold mt-4 mb-3 CNG-bio-i-m">
-                                {this.props.name}
-                            </h5>
+  
+                            <div class="BLM-orgs">
+                                <div>
+                                    <div className="BLM-PT">
+                                    <h3> Peititons </h3>
+                                    <ul className="BLM-links BLM-links-i">
+                                        
+                                        <li> <a href="http://chng.it/g6yBVQjnjw">Justice for George Floyd</a></li>
+                                        <li> <a href="http://chng.it/PNtQHTq8Gp">Justice for Ahmaud Arbery</a></li>
+                                        <li> <a href="http://chng.it/6XHfXg64YC">THE TRAYVON MARTIN LAW </a></li>
+                                    </ul>
+                                    </div>
+                                    <div className="BLM_ORG">
+                                    <h3> BLM Organization </h3>
+                                    <ul className="BLM-links">
+                                        
+                                        <li> <a href="https://gf.me/u/x7yxyj"> NYC Revolutionaries</a></li>
+                                        <li><a href="https://www.aclu.org/">ACLU</a></li>
+                                        <li><a href="https://www.naacpldf.org/">NAACP</a></li>
+
+                                    </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="VT-BTN">
                             <button onClick={(e) => this.voteHandler(e, 'YEA')}>
                                 Vote Yea
               </button>
                             <button onClick={(e) => this.voteHandler(e, 'NAY')}>
                                 Vote Nay
               </button>
+              </div>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button

@@ -127,6 +127,35 @@
   width: 18%;
   position: relative;
 }
+.BLM-PT {
+  display: inline;
+  font-family: 'Roboto Slab', serif;
+  margin-top: 5em;
+  float: left;
+}
+.BLM-links{
+  list-style-type: none;
+}
+
+.VT-BTN{
+  position: relative;
+    bottom: -15em;
+    left: -7em;
+}
+
+.BLM-links-i{
+  position: relative;
+  left: -3em;
+  top: 1em;
+}
+.BLM_ORG{
+  display: inline;
+  font-family: 'Roboto Slab', serif;
+
+  position: relative;
+  top: 71.5px;
+
+}
 .CNG-rtgtxt {
   position: absolute;
   left: 38%;
