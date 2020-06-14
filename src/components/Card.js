@@ -95,12 +95,12 @@ export default class Card extends Component {
     }
     render() {
         let partyCNG;
-        if (this.props.party === "D") {
+        if (this.props.party === "Democratic Party") {
             partyCNG = true;
-        } else if (this.props.party === "R") {
+        } else if (this.props.party === "Republican Party") {
             partyCNG = false;
         } else {
-            return;
+            return <div></div>;
         }
 
         return (

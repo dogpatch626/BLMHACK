@@ -1,67 +1,12 @@
 import React, { Component } from "react";
 import Card from "./Card.js";
+import adapter from '../adapters/adapter';
 
 export default class Main extends Component {
   state = {
     show: false,
-    data: [
-      {
-        key: 1,
-        name: 'Charles "Chuck" Schumer',
-        party: 'D',
-        title: 'Senior Senator for New York',
-        pic: 'https://www.govtrack.us/static/legislator-photos/300087-100px.jpeg'
-      },
-      {
-        key: 2,
-        name: 'Kirsten Gillibrand',
-        party: 'D',
-        title: 'Junior Senator for New York',
-        pic: 'https://www.govtrack.us/static/legislator-photos/412223-100px.jpeg'
-      },
-      {
-        key: 3,
-        name: 'José Serrano',
-        party: 'R',
-        title: 'Representative for New Yorks 15th congressional district',
-        pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
-      },
-      {
-        key: 4,
-        name: 'José Serrano',
-        party: 'R',
-        title: 'Representative for New Yorks 15th congressional district',
-        pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
-      },
-      {
-        key: 5,
-        name: 'Charles "Chuck" Schumer',
-        party: 'D',
-        title: 'Senior Senator for New York',
-        pic: 'https://www.govtrack.us/static/legislator-photos/300087-100px.jpeg'
-      },
-      {
-        key: 6,
-        name: 'Kirsten Gillibrand',
-        party: 'D',
-        title: 'Junior Senator for New York',
-        pic: 'https://www.govtrack.us/static/legislator-photos/412223-100px.jpeg'
-      },
-      {
-        key: 7,
-        name: 'José Serrano',
-        party: 'R',
-        title: 'Representative for New Yorks 15th congressional district',
-        pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
-      },
-      {
-        key: 8,
-        name: 'José Serrano',
-        party: 'R',
-        title: 'Representative for New Yorks 15th congressional district',
-        pic: 'https://www.govtrack.us/static/legislator-photos/400366-100px.jpeg'
-      }
-    ]
+    officials: [],
+    offices: {}
   };
 
   changeHandler = (e) => {
@@ -78,10 +23,26 @@ export default class Main extends Component {
                     
 
   componentDidMount() {
-    // this.setState({
-    //   data: this.props.data
-    // })
-    // console.log(this.props.data)
+    adapter.apiSearch(this.props.zipcode).then(res => {
+      if(res.officials) {
+        this.setState({
+          officials: res.officials
+        });
+
+        res.offices.forEach(o => {
+          for (const oi of o.officialIndices) {
+            this.setState({
+              offices: {
+                ...this.state.offices,
+                [oi]: o.name
+              }
+            })
+          }
+        })
+   
+      }
+    })
+
   }
 
   render() {
@@ -107,19 +68,19 @@ export default class Main extends Component {
               </h2>
 
               <div class="row">
-                {this.state.data.map((person, index) => (
+                {this.state.officials.map((person, index) => {
                   // <p>Hello, {person.name} from {person.country}!</p>
-
-                  <Card
-                    id={person.key}
+console.log(this.state.officials);
+                  return (<Card
+                    id={Math.floor(Math.random() * 20000).toString()}
                     name={person.name}
                     party={person.party}
-                    pic={person.pic}
-                    title={person.title}
-                  />
+                    pic={person.photoUrl || 'https://media.musclegrid.io/RBBJJ.COM/uploads/2020/01/24011124/default-headshot.jpg'}
+                    title={this.state.offices[index]}
+                  />);
 
 
-                ))}
+  })}
 
               </div>
             </section>
