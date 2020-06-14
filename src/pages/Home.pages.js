@@ -12,7 +12,9 @@ const ipLocation = require("iplocation");
 class Home extends Component {
   state = {
     zipcode: "",
+    apiData: [],
   };
+
 
   zipChangeHandler(e) {
     this.setState({ zipcode: e.target.value });
@@ -48,10 +50,16 @@ class Home extends Component {
 
   changePage = (e) => {
     e.preventDefault();
-    //Zipcode Here
-    // console.log(this.state.zipcode)
 
-    ReactDOM.render(<Main />, document.getElementById("root"));
+    adapter.apiSearch(this.state.zipcode)
+      .then(data => {
+        console.log(data)
+        this.setState({
+          apiData: data
+        })
+      })
+
+    // ReactDOM.render(<Main zipcode={this.state.zipcode} />, document.getElementById("root"));
   };
 
   render() {

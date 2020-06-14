@@ -75,7 +75,6 @@ export default class Card extends Component {
     componentDidMount() {
 
         let g = localStorage.getItem('CNG' + this.props.id)
-        console.log(g)
     }
     render() {
         let partyCNG;
