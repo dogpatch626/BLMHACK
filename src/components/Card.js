@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Bar from "./Bar.js";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default class Card extends Component {
     state = {
@@ -9,7 +11,14 @@ export default class Card extends Component {
         showVote: false,
         voted: false,
     };
-    // polling begin
+    captchaDone(v) {
+        let overlay = document.getElementByID("overlay");
+        overlay.style.display = "none"
+        
+        let btn = document.getElementById("btn");
+        btn.style.display = "inline"
+     
+    }
 
     voteHandler(e, v) {
         if (this.state.voted === false && localStorage.getItem('CNG' + this.props.id) === null) {
@@ -153,42 +162,56 @@ export default class Card extends Component {
                     </Modal>
 
                     {/* End  CNG Modal */}
+
                     {/* Voting Modal */}
                     <Modal show={this.state.showVote} onHide={this.handlerVote}>
+
                         <Modal.Body className="voteModal">
-  
+                            <div className="BLM-F-1"></div>
+                            <div className="BLM-F-2"></div>
+                            <div className="BLM-F-3"></div>
                             <div class="BLM-orgs">
                                 <div>
                                     <div className="BLM-PT">
-                                    <h3> Peititons </h3>
-                                    <ul className="BLM-links BLM-links-i">
-                                        
-                                        <li> <a href="http://chng.it/g6yBVQjnjw">Justice for George Floyd</a></li>
-                                        <li> <a href="http://chng.it/PNtQHTq8Gp">Justice for Ahmaud Arbery</a></li>
-                                        <li> <a href="http://chng.it/6XHfXg64YC">THE TRAYVON MARTIN LAW </a></li>
-                                    </ul>
+                                        <h3 className="pt-fix">Peititons</h3>
+                                        <ul className="BLM-links BLM-links-i">
+
+                                            <li> <a href="http://chng.it/g6yBVQjnjw">Justice for George Floyd</a></li>
+                                            <li> <a href="http://chng.it/PNtQHTq8Gp">Justice for Ahmaud Arbery</a></li>
+                                            <li> <a href="http://chng.it/6XHfXg64YC">THE TRAYVON MARTIN LAW </a></li>
+                                        </ul>
                                     </div>
                                     <div className="BLM_ORG">
-                                    <h3> BLM Organization </h3>
-                                    <ul className="BLM-links">
-                                        
-                                        <li> <a href="https://gf.me/u/x7yxyj"> NYC Revolutionaries</a></li>
-                                        <li><a href="https://www.aclu.org/">ACLU</a></li>
-                                        <li><a href="https://www.naacpldf.org/">NAACP</a></li>
+                                        <h3>BLM <br /> Organizations </h3>
+                                        <ul className="BLM-links">
 
-                                    </ul>
+                                            <li> <a href="https://jlusa.org/"> Just Leadership</a> - <a href="https://exaltyouth.org/"> Exalt Youth</a> - <a href="https://gf.me/u/x7yxyj"> NYC Revolutionaries</a></li>
+                                            <li><a href="https://www.knowyourrightscamp.com/">Know Your Rights Camp</a> - <a href="https://www.aclu.org/">ACLU</a> - <a href="https://www.naacpldf.org/">NAACP</a></li>
+
+
+                                        </ul>
                                     </div>
+
                                 </div>
 
                             </div>
-                            <div className="VT-BTN">
-                            <button onClick={(e) => this.voteHandler(e, 'YEA')}>
-                                Vote Yea
-              </button>
-                            <button onClick={(e) => this.voteHandler(e, 'NAY')}>
-                                Vote Nay
-              </button>
-              </div>
+                            <div className="BLM-Vot">
+                                <ReCAPTCHA
+                                    sitekey="6LfJWaQZAAAAAI7UuhtY_vfZh_bUHaFVgldng9ne"
+                                    onChange={this.captchaDone}
+                                />
+                                <div id="btn" className="BLM-Vot-b">
+                                    <button className="bm-yea" onClick={(e) => this.voteHandler(e, 'YEA')}>
+                                        Vote Yea
+                                </button>
+                                    <button className="bm-nay" onClick={(e) => this.voteHandler(e, 'NAY')}>
+                                        Vote Nay
+                                </button>
+                                </div>
+                                <div id="overlay" className="BLM-Vot-c">
+                                    Complete <br/> Captcha
+                                </div>
+                            </div>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button

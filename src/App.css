@@ -42,6 +42,35 @@
 
 }
 
+.BLM-F-1 {
+  background-color: #77dd77;
+  position: absolute;
+  height: 33.33%;
+  ;
+  width: 100%;
+  left: 0px;
+}
+
+.BLM-F-2 {
+  background-color: #dd7777;
+  position: absolute;
+  height: 33.33%;
+  ;
+  width: 100%;
+  left: 0px;
+  top: 11em;
+}
+
+.BLM-F-3 {
+  background-color: #000;
+  position: absolute;
+  height: 33.33%;
+  ;
+  width: 100%;
+  left: 0px;
+  top: 21em;
+}
+
 .percent {
   position: absolute;
   top: 50%;
@@ -52,6 +81,17 @@
   font-size: 12px;
   color: black;
   font-weight: bold;
+}
+
+.BLM-Vot-c {
+  color: #fbff34;
+  position: relative;
+  font-size: 21px;
+  right: -10rem;
+  font-family: 'Roboto Slab', serif;
+  top: -3em;
+  text-align: center;
+  font-weight: 700;
 }
 
 .BLM-head {
@@ -123,39 +163,72 @@
   margin-top: 8px !important;
   width: 30%;
 }
+
 .logo {
   width: 18%;
   position: relative;
 }
+
 .BLM-PT {
   display: inline;
   font-family: 'Roboto Slab', serif;
-  margin-top: 5em;
-  float: left;
+  position: relative;
+  top: 2em;
+  text-align: left;
+  left: 2em;
 }
-.BLM-links{
+
+.BLM-links {
   list-style-type: none;
 }
 
-.VT-BTN{
+.pt-fix {
+  left: -6px;
   position: relative;
-    bottom: -15em;
-    left: -7em;
 }
 
-.BLM-links-i{
+.VT-BTN {
+  position: relative;
+  bottom: -15em;
+  left: -7em;
+}
+
+.BLM-links-i {
   position: relative;
   left: -3em;
-  top: 1em;
+
 }
-.BLM_ORG{
+
+#btn {
+  display: none;
+}
+
+.bm-yea {
+  position: relative;
+  right: -22.5em;
+  top: -5em;
+}
+
+.bm-nay {
+  position: relative;
+  right: -17.5em;
+  top: -1.5em;
+}
+
+.BLM-Vot {
+  position: relative;
+  top: 6em;
+}
+
+.BLM_ORG {
   display: inline;
   font-family: 'Roboto Slab', serif;
-
+  text-align: right;
   position: relative;
-  top: 71.5px;
+  top: 4em;
 
 }
+
 .CNG-rtgtxt {
   position: absolute;
   left: 38%;
@@ -195,6 +268,16 @@
   border-radius: 0;
   background-color: black;
   font-weight: bold;
+  position: relative;
+  top: 6px;
+}
+
+.card-a {
+  color: #060606 !important;
+}
+
+a:hover {
+  color: #4a88ca;
 }
 
 .CNG-bio-WHI {
