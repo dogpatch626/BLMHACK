@@ -19,6 +19,8 @@ export default class Card extends Component {
 
         let btn = document.getElementById("btn");
         btn.style.display = "inline"    
+
+        console.log("quick fix hit")
     }
     captchaDone(v) {
         let data = {
